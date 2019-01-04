@@ -1,0 +1,1 @@
+Manfred Broy & Marco Kurhmann - Projektorganisation und Management im Software Engineering
