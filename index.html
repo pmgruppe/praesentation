@@ -47,7 +47,7 @@
 		<script>
 			var source = "";
 			var xmlhttp = new XMLHttpRequest();
-			var sourceDir = "folien/";
+			/*var sourceDir = "folien/";
 
 			sourceDirs = [
 				"",
@@ -73,7 +73,12 @@
 				}
 			}
 
-			source = source.substring(0, source.length - 5);
+			source = source.substring(0, source.length - 5);*/
+
+			xmlhttp.open('GET', "folien.md", false);
+			xmlhttp.send();
+
+			source = xmlhttp.responseText;
 
 			var slideshow = remark.create({
 				source: source
