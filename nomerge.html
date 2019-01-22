@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Title</title>
+		<meta charset="utf-8" />
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic');
+			@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800');
+
+			* {
+				font-family: 'Open Sans', sans-serif;
+				line-height: 110%;
+			}
+			.remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+
+			h1 { font-size: 36px !important; }
+			h2 { font-size: 30px !important; }
+			h3 { font-size: 24px !important; }
+			h4 { font-size: 18px !important; }
+
+			img {
+				max-width: 100%;
+			}
+
+			.t-big, .t1, .t2, .t3 {
+				display: inline-block;
+				width: 100%;
+				text-align: center;
+				font-weight: bold;
+			}
+
+			.t-big { font-size: 50px; }
+			.t1 { font-size: 36px; }
+			.t2 { font-size: 30px; }
+			.t3 { font-size: 24px; }
+
+			.center-small {
+				display: inline-block;
+				width: 100%;
+				text-align: center;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body>
+		<script src="remark.min.js"></script>
+		<script>
+			var source = "";
+			var xmlhttp = new XMLHttpRequest();
+			var sourceDir = "folien/";
+
+			sourceDirs = [
+				"",
+				"1_einleitung/",
+				"2_lebenszyklus/",
+				"3_projektentstehung/",
+				"4_projektorganisation/",
+				"5_vorgehensmodelle/",
+				"6_projektfortschritt/",
+				"7_qualitaet/",
+				"8_projektabschluss/"
+			];
+
+			for(var dI = 0; dI < sourceDirs.length; dI++){
+				for(var fI = 1; ; fI++){
+					var f = sourceDir + sourceDirs[dI] + fI + ".md";
+					xmlhttp.open('GET', sourceDir + sourceDirs[dI] + fI + ".md", false);
+					xmlhttp.send();
+					if(xmlhttp.status == 404) break;
+
+					source += xmlhttp.responseText;
+					source += "\n---\n";
+				}
+			}
+
+			source = source.substring(0, source.length - 5);
+
+			var slideshow = remark.create({
+				source: source
+			});
+		</script>
+	</body>
+</html>
